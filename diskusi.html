@@ -73,7 +73,7 @@
         <form id="discussion-form">
             <input type="text" id="username" placeholder="Nama Anda (opsional)">
             <input type="text" id="title" placeholder="Judul Diskusi">
-            <p>Format penulisan membalas diskusi: "Balasan dari" - "judul yg di ingin di balas" - "username yang bertanya"</p>
+            <p>Format penulisan membalas diskusi: "Balasan dari" - "judul yg di ingin di balas"</p>
             <textarea id="message" placeholder="Bagikan pengalaman atau pertanyaan Anda..." rows="5"></textarea>
             <button type="submit">Kirim</button>
         </form>
@@ -85,7 +85,7 @@
 
 
     <!-- PUNYA ASA -->
-    <!-- <script>
+    <script>
         const form = document.getElementById('discussion-form');
         const discussionList = document.getElementById('discussion-list');
 
@@ -118,69 +118,7 @@
                 alert("Pesan tidak boleh kosong!");
             }
         });
-    </script> -->
-
-    <!-- ai -->
-    <script>
-        const form = document.getElementById('discussion-form');
-        const discussionList = document.getElementById('discussion-list');
-    
-        // Fetch discussions from the backend
-        async function fetchDiscussions() {
-            const response = await fetch('http://localhost:5000/discussions');
-            const discussions = await response.json();
-            discussions.forEach(discussion => {
-                addDiscussionToList(discussion);
-            });
-        }
-    
-        // Function to add discussion to the list
-        function addDiscussionToList(discussion) {
-            const discussionItem = document.createElement('div');
-            discussionItem.classList.add('discussion-item');
-            discussionItem.innerHTML = `
-                <h3>${discussion.title}</h3>
-                <strong>${discussion.username}</strong>
-                <p>${discussion.message}</p>
-            `;
-            discussionList.appendChild(discussionItem);
-        }
-    
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-    
-            const username = document.getElementById('username').value || "Anonim";
-            const title = document.getElementById('title').value || "Tanpa Judul";
-            const message = document.getElementById('message').value;
-    
-            if (message.trim()) {
-                // Send data to the backend
-                const response = await fetch('http://localhost:5000/discussions', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ username, title, message }),
-                });
-    
-                if (response.ok) {
-                    const newDiscussion = await response.json();
-                    addDiscussionToList(newDiscussion);
-    
-                    // Clear the input fields
-                    document.getElementById('username').value = '';
-                    document.getElementById('title').value = '';
-                    document.getElementById('message').value = '';
-                }
-            } else {
-                alert("Pesan tidak boleh kosong!");
-            }
-        });
-    
-        // Initial fetch of discussions
-        fetchDiscussions();
     </script>
 
-    <script src="server.js"></script>
 </body>
 </html>

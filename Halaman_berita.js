@@ -57,11 +57,19 @@ function tampilkanError(message) {
 document.addEventListener('DOMContentLoaded', fetchBeritaKesehatanMental);
 
 // Navbar Toggle
-// document.addEventListener('DOMContentLoaded', () => {
-//   const menuToggle = document.querySelector('.menu-toggle');
-//   const navbarMenu = document.querySelector('.navbar-menu');
+// Toggle class active
+const navbarNav = document.querySelector(".navbar-nav");
 
-//   menuToggle.addEventListener('click', () => {
-//     navbarMenu.classList.toggle('active');
-//   });
-// });
+// Pas hamburger-menu di klik
+document.querySelector("#hamburger-menu").onclick = () => {
+  navbarNav.classList.toggle("active");
+};
+
+// Klik diluar sidebar buat hilangin nav
+const hamburger = document.querySelector("#hamburger-menu");
+
+document.addEventListener("click", function (e) {
+  if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+    navbarNav.classList.remove("active");
+  }
+});

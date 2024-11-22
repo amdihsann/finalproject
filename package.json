@@ -4,12 +4,14 @@
   "description": "final project",
   "main": "halaman utama.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1",
     "nodemon": "^3.1.7"
-  }
+  },
+  "keywords": []
 }
