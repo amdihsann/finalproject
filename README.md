@@ -22,3 +22,7 @@ Technologies Used:
 1. HTML
 2. CSS
 3. Javascript
+
+Should you have any suggestions or feedback, feel free to reach out to me via direct message on LinkedIn or email
+<br>email: ahmadihsan506@gmail.com
+<br>linkedIn: https://www.linkedin.com/in/ahmadihsan-/
